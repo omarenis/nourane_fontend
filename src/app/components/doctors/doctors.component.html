@@ -1,0 +1,36 @@
+<div class="table-responsive">
+    <table aria-describedby="listDoctors" class="table">
+        <thead>
+        <tr>
+            <th class="">image de {{role != 'admin' ? 'médecin' : "l'utilisateur"}}</th>
+            <th class="">nom de {{role != 'admin' ? 'médecin' : "l'utilisateur"}}</th>
+            <th class="">prénom de {{role != 'admin' ? 'médecin' : "l'utilisateur"}}</th>
+            <th class="">email de {{role != 'admin' ? 'médecin' : "l'utilisateur"}}</th>
+            <th class="">télephone de {{role != 'admin' ? 'médecin' : "l'utilisateur"}}</th>
+            <th *ngIf="role != 'admin'" class="text-center">la spécialité</th>
+            <th class="" *ngIf="role == 'admin'">role de {{role != 'admin' ? 'médecin' : "l'utilisateur"}}</th>
+            <th *ngIf="role =='admin'" class="text-right"></th>
+        </tr>
+        </thead>
+        <tbody #tbody>
+        <tr *ngFor="let row of rows">
+            <td class=""><img [src]="row.avatarUrl" alt="imageOfUser" [ngClass]="{'w-25': role == 'admin', 'w-50': role != 'admin'}"></td>
+            <td class="">{{row.firstname}}</td>
+            <td class="">{{row.lastname}}</td>
+            <td class="">{{row.email}}</td>
+            <td class="">{{row.telephone}}</td>
+            <td *ngIf="role == 'admin'" class="">{{row.role}}</td>
+            <td *ngIf="row.role === 'doctor' && role !== 'admin'" class="">{{row.speciality}}</td>
+            <td class="text-right">
+                <button *ngIf="role === 'admin'" [ngClass]="{'btn-outline-danger': row.isActive, 'btn-outline-success': !row.isActive}" class="btn"
+                        type="button" (click)="activateAccount(row.id)">
+                    <em class="material-icons"></em>
+                </button>
+                <a *ngIf="role === 'patient'" class="btn btn-info" type="button">
+                    demander un rendez vous
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

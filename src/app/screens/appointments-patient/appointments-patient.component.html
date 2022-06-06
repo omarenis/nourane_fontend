@@ -1,0 +1,46 @@
+<div class="row" style="margin-top: 7rem">
+    <div class="col-md-12 card">
+        <div class="card-header card-header-success card-header-icon">
+            <div class="card-icon">
+                <em class="material-icons">date_range</em>
+            </div>
+            <h4 class="card-title">les dates de mes rendez vous</h4>
+        </div>
+        <div class="card-body">
+            <a mat-raised-button class="btn btn-success" routerLink="/nos-medecins">ajouter render vous</a>
+            <div class="row" style="margin-top: 5rem">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table aria-describedby="listDoctors" class="table">
+                            <thead>
+                            <tr>
+                                <th class="">date et temps de render vous demandé</th>
+                                <th class="">sujet de render vous</th>
+                                <th class="">le diagnostic de render vous</th>
+                                <th class="text-right"></th>
+                            </tr>
+                            </thead>
+                            <tbody #tbody>
+                            <tr *ngFor="let row of appointments; let i=index">
+                                <td class="">{{row.dateCreation | date: 'dd-MM-yyyy  hh:mm:ss'}}</td>
+                                <td class="">{{row.subject}}</td>
+                                <td class="">
+                                    <button mat-raised-button class="btn btn-success"
+                                            style="margin-left: 5%; height: 40px">
+                                        <em class="material-icons">inventory</em>
+                                    </button>
+                                </td>
+                                <td class="text-right">
+                                    <button class="btn btn-danger" type="button">
+                                        <em class="material-icons" (click)="delete(row.id, i)">delete</em>
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
