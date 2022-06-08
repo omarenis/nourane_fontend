@@ -2,23 +2,22 @@
     <table aria-describedby="listDoctors" class="table">
         <thead>
         <tr>
-            <th class="">image de {{role != 'admin' ? 'médecin' : "l'utilisateur"}}</th>
-            <th class="">nom de {{role != 'admin' ? 'médecin' : "l'utilisateur"}}</th>
-            <th class="">prénom de {{role != 'admin' ? 'médecin' : "l'utilisateur"}}</th>
-            <th class="">email de {{role != 'admin' ? 'médecin' : "l'utilisateur"}}</th>
-            <th class="">télephone de {{role != 'admin' ? 'médecin' : "l'utilisateur"}}</th>
+            <th class="text-center">nom de {{role != 'admin' ? 'médecin' : "l'utilisateur"}}</th>
+            <th class="text-center">prénom de {{role != 'admin' ? 'médecin' : "l'utilisateur"}}</th>
+            <th class="text-center">email de {{role != 'admin' ? 'médecin' : "l'utilisateur"}}</th>
+            <th class="text-center">télephone de {{role != 'admin' ? 'médecin' : "l'utilisateur"}}</th>
             <th *ngIf="role != 'admin'" class="text-center">la spécialité</th>
-            <th class="" *ngIf="role == 'admin'">role de {{role != 'admin' ? 'médecin' : "l'utilisateur"}}</th>
+            <th class="text-center" *ngIf="role == 'admin'">role de {{role != 'admin' ? 'médecin' : "l'utilisateur"}}</th>
             <th *ngIf="role =='admin'" class="text-right"></th>
         </tr>
         </thead>
         <tbody #tbody>
         <tr *ngFor="let row of rows">
             <td class=""><img [src]="row.avatarUrl" alt="imageOfUser" [ngClass]="{'w-25': role == 'admin', 'w-50': role != 'admin'}"></td>
-            <td class="">{{row.firstname}}</td>
-            <td class="">{{row.lastname}}</td>
-            <td class="">{{row.email}}</td>
-            <td class="">{{row.telephone}}</td>
+            <td class="text-center">{{row.firstname}}</td>
+            <td class="text-center">{{row.lastname}}</td>
+            <td class="text-center">{{row.email}}</td>
+            <td class="text-center">{{row.telephone}}</td>
             <td *ngIf="role == 'admin'" class="">{{row.role}}</td>
             <td *ngIf="row.role === 'doctor' && role !== 'admin'" class="">{{row.speciality}}</td>
             <td class="text-right">
@@ -26,9 +25,9 @@
                         type="button" (click)="activateAccount(row.id)">
                     <em class="material-icons"></em>
                 </button>
-                <a *ngIf="role === 'patient'" class="btn btn-info" type="button">
+                <button *ngIf="role === 'patient'" class="btn btn-info" type="button" (click)="goToAvailabilities(row.id)">
                     demander un rendez vous
-                </a>
+                </button>
             </td>
         </tr>
         </tbody>

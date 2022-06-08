@@ -10,6 +10,7 @@ import {AdminUsersComponent} from "./screens/admin-users/admin-users.component";
 import {AvailabilitiesDoctorComponent} from "./screens/availibilities-doctor/availabilities-doctor.component";
 import {ProfileComponent} from "./screens/profile/profile.component";
 import {AppointmentsPatientComponent} from "./screens/appointments-patient/appointments-patient.component";
+import {AvailabilitiesCalendarComponent} from "./screens/avaialabilities-calandar/availabilities-calendar.component";
 
 const routes: Routes = [
     {
@@ -22,7 +23,8 @@ const routes: Routes = [
             { path: 'index', component: IndexComponent},
             {path: 'our-doctors', component: OurDoctorsComponent},
             {path: 'profile', component: ProfileComponent},
-            {path: 'appointments', component: AppointmentsPatientComponent}
+            {path: 'appointments', component: AppointmentsPatientComponent},
+            {path: 'availabilities', component: AvailabilitiesCalendarComponent}
         ]
     },
     {

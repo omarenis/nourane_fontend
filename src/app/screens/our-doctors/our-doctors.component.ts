@@ -11,7 +11,8 @@ import {environment} from "../../../environments/environment";
 export class OurDoctorsComponent implements OnInit {
     doctors !: User[];
     role !: string;
-    private path = `${environment.url}/users`;
+    private path = `${environment.url}/doctors`;
+    speciality !: string;
   constructor(private service: AbstractRestService<User>) {}
 
   ngOnInit(): void {
@@ -65,5 +66,14 @@ export class OurDoctorsComponent implements OnInit {
       //         telephone: '+216128616'
       //     }
       // ]
+  }
+  selectBySpeciality($event: Event)
+  {
+      $event.preventDefault();
+      this.service.list(this.path, {
+          params: {
+              speciality: this.speciality
+          }
+      }).subscribe((response) => {this.doctors = response});
   }
 }

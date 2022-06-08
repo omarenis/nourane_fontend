@@ -80,5 +80,6 @@ export class AppointmentsPatientComponent implements OnInit {
 
     delete(id: number | undefined, i: number) {
         console.log(id);
+        this.appointments.splice(i, 1);
     }
 }

@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Observable} from "rxjs";
-import {User} from "../models/User";
 export interface Token{
     access: string;
     refresh: string;
@@ -21,8 +20,8 @@ export class LoginSignupService {
 
     constructor(private httpClient: HttpClient) {}
 
-    public login(loginNumber: string, password: string): Observable<Token> {
-        return this.httpClient.post<Token>(`${this.path}/login`, {loginNumber, password});
+    public login(email: string, password: string): Observable<Token> {
+        return this.httpClient.post<Token>(`${this.path}/api/login`, {email, password});
     }
 
     public signup(person: any): Observable<void> {

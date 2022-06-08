@@ -12,7 +12,7 @@ import {MatRadioModule} from "@angular/material/radio";
 import {OurDoctorsComponent} from './screens/our-doctors/our-doctors.component';
 import {DoctorsComponent} from './components/doctors/doctors.component';
 import {IndexComponent} from './screens/index/index.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AvailabilitiesDoctorComponent } from './screens/availibilities-doctor/availabilities-doctor.component';
 import {MatTooltipModule} from "@angular/material/tooltip";
 import { AdminUsersComponent } from './screens/admin-users/admin-users.component';
@@ -27,15 +27,16 @@ import {MAT_DATETIME_FORMATS, MatDatetimepickerModule, MatNativeDatetimeModule} 
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { ConsultationsComponent } from './components/consultations/consultations.component';
 import { AppointmentsPatientComponent } from './screens/appointments-patient/appointments-patient.component';
+import { AvailabilitiesCalendarComponent } from './screens/avaialabilities-calandar/availabilities-calendar.component';
 
 
 @NgModule({
     declarations: [AppComponent, AuthLayoutComponent, AdminLayoutComponent, SidebarComponent,
         LoginComponent, SignupComponent, OurDoctorsComponent, DoctorsComponent, IndexComponent, AvailabilitiesDoctorComponent,
-        AdminUsersComponent, ProfileComponent, AvailabilitiesComponent, ConsultationsComponent, AppointmentsPatientComponent],
+        AdminUsersComponent, ProfileComponent, AvailabilitiesComponent, ConsultationsComponent, AppointmentsPatientComponent, AvailabilitiesCalendarComponent],
     imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, HttpClientModule, MatButtonModule, MatRadioModule, ReactiveFormsModule,
         MatTooltipModule, MatLuxonDateModule, MatFormFieldModule, MatDatepickerModule, MatInputModule,
-        MatNativeDatetimeModule, MatDatetimepickerModule],
+        MatNativeDatetimeModule, MatDatetimepickerModule, FormsModule],
     providers: [
         {
             provide: MAT_DATETIME_FORMATS,

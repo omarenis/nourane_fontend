@@ -10,7 +10,9 @@
             <div class="col-md-8">
                 <div class="card-body">
                     <mat-form-field class="example-full-width">
-                        <input matInput placeholder="specialité" type="text">
+                        <mat-label>chercher par spécialité</mat-label>
+                        <input matInput placeholder="specialité" type="text" style="color: black" [(ngModel)]="speciality"
+                               (change)="selectBySpeciality($event)">
                     </mat-form-field>
                     <app-doctors [rows]="doctors" [role]="role"></app-doctors>
                 </div>

@@ -2,9 +2,10 @@ import {Component, OnInit, ElementRef, OnDestroy} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {LoginSignupService, Token} from "../../services/login-signup.service";
 import {SecureStorageService} from "../../services/secure-storage.service";
-import {saveDataToLocalhost} from "../../services/genericservice";
+import {AbstractRestService, saveDataToLocalhost} from "../../services/genericservice";
 import {Router} from "@angular/router";
 import {ConnectionService} from "../../services/connection.service";
+import {User} from "../../models/User";
 
 declare var $: any;
 
@@ -21,10 +22,11 @@ export class LoginComponent implements OnInit, OnDestroy {
     private sidebarVisible: boolean;
     private nativeElement: Node;
     shown !: boolean;
-
+    private path = "http://localhost:3000/users";
     constructor(private element: ElementRef, private loginSignupService: LoginSignupService,
                 private secureStorageService: SecureStorageService, private router: Router,
-                private connection: ConnectionService) {
+                private connection: ConnectionService,
+                private userService: AbstractRestService<User>) {
         this.nativeElement = element.nativeElement;
         this.sidebarVisible = false;
     }
@@ -53,12 +55,26 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     submit($event: Event) {
         $event.preventDefault();
-        this.loginSignupService.login(this.formGroup.value.email, this.formGroup.value.password).subscribe(async (response: Token) => {
-            response.access = this.secureStorageService.setToken(response.access);
-            response.refresh = this.secureStorageService.setToken(response.refresh);
-            saveDataToLocalhost(response);
-            this.connection.setConnection({firstname: response.firstname, lastname: response.lastname})
-            await this.router.navigate(['/']);
-        })
+        this.userService.list(this.path, {
+            params: {
+                email: this.formGroup.value.email
+            }
+        }).subscribe(async (response) => {
+            if(response[0].password === this.formGroup.value.password)
+            {
+                localStorage.setItem("userId", String(response[0].id));
+                localStorage.setItem("role", String(response[0].role));
+                localStorage.setItem("firstname", response[0].firstname);
+                localStorage.setItem("lastname", response[0].lastname);
+            }
+            await this.router.navigate(["/"]);
+        });
+        // this.loginSignupService.login(this.formGroup.value.email, this.formGroup.value.password).subscribe(async (response: Token) => {
+        //     response.access = this.secureStorageService.setToken(response.access);
+        //     response.refresh = this.secureStorageService.setToken(response.refresh);
+        //     saveDataToLocalhost(response);
+        //     this.connection.setConnection({firstname: response.firstname, lastname: response.lastname})
+        //     await this.router.navigate(['/']);
+        // })
     }
 }
