@@ -41,6 +41,9 @@ const routes: Routes = [
                 path: 'availabilities', component: AvailabilitiesDoctorComponent
             },
             {
+                path: 'availabilities/:id', component: AppointmentsPatientComponent
+            },
+            {
                 path: 'users/:id', component: ProfileComponent
             }
         ]

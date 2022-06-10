@@ -15,7 +15,60 @@ export class ConsultationsComponent implements OnInit {
     }
 
     ngOnInit(): void {
-
+        this.role = 'doctor';
+        this.rows = [
+            {
+                id: 1,
+                dateCreation: new Date('2014-01-02 22:01:02'),
+                status: true,
+                subject: 'i got a stomac ache',
+                patient: {
+                    firstname: 'omar',
+                    lastname: 'triki',
+                    email: 'omartriki712@gmail.com',
+                    telephone: '24127616',
+                    avatarUrl: ''
+                },
+                availability: {
+                    dateTimeEnd: new Date('2014-02-01 22:01:02'),
+                    dateTimeStart: new Date('2014-01-02 22:01:02'),
+                    doctor:
+                        {
+                            firstname: '',
+                            lastname: '',
+                            email: '',
+                            avatarUrl: '',
+                            telephone: ''
+                        }
+                }
+            },
+            {
+                id: 1,
+                dateCreation: new Date('2014-01-02 10:02:02'),
+                status: true,
+                subject: 'i got a had aches',
+                patient: {
+                    firstname: 'omar',
+                    lastname: 'triki',
+                    email: 'omartriki712@gmail.com',
+                    telephone: '24127616',
+                    avatarUrl: ''
+                },
+                availability: {
+                    dateTimeEnd: new Date('2014-02-01 22:01:02'),
+                    dateTimeStart: new Date('2014-01-02 22:01:02'),
+                    doctor:
+                        {
+                            firstname: '',
+                            lastname: '',
+                            email: '',
+                            avatarUrl: '',
+                            telephone: ''
+                        }
+                }
+            }
+        ]
+        this.role = 'doctor';
     }
 
     delete(id: number | undefined, i: number) {
