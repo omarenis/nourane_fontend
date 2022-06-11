@@ -28,12 +28,15 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { ConsultationsComponent } from './components/consultations/consultations.component';
 import { AppointmentsPatientComponent } from './screens/appointments-patient/appointments-patient.component';
 import { AvailabilitiesCalendarComponent } from './screens/avaialabilities-calandar/availabilities-calendar.component';
+import { DocumentsComponent } from './components/documents/documents.component';
+import { DocumentsShareComponent } from './screens/documents-share/documents-share.component';
+import { UsersDocsComponent } from './screens/users-docs/users-docs.component';
 
 
 @NgModule({
     declarations: [AppComponent, AuthLayoutComponent, AdminLayoutComponent, SidebarComponent,
         LoginComponent, SignupComponent, OurDoctorsComponent, DoctorsComponent, IndexComponent, AvailabilitiesDoctorComponent,
-        AdminUsersComponent, ProfileComponent, AvailabilitiesComponent, ConsultationsComponent, AppointmentsPatientComponent, AvailabilitiesCalendarComponent],
+        AdminUsersComponent, ProfileComponent, AvailabilitiesComponent, ConsultationsComponent, AppointmentsPatientComponent, AvailabilitiesCalendarComponent, DocumentsComponent, DocumentsShareComponent, UsersDocsComponent],
     imports: [BrowserModule, BrowserAnimationsModule, AppRoutingModule, HttpClientModule, MatButtonModule, MatRadioModule, ReactiveFormsModule,
         MatTooltipModule, MatLuxonDateModule, MatFormFieldModule, MatDatepickerModule, MatInputModule,
         MatNativeDatetimeModule, MatDatetimepickerModule, FormsModule],

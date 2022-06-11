@@ -11,6 +11,7 @@ import {AvailabilitiesDoctorComponent} from "./screens/availibilities-doctor/ava
 import {ProfileComponent} from "./screens/profile/profile.component";
 import {AppointmentsPatientComponent} from "./screens/appointments-patient/appointments-patient.component";
 import {AvailabilitiesCalendarComponent} from "./screens/avaialabilities-calandar/availabilities-calendar.component";
+import {UsersDocsComponent} from "./screens/users-docs/users-docs.component";
 
 const routes: Routes = [
     {
@@ -24,7 +25,8 @@ const routes: Routes = [
             {path: 'our-doctors', component: OurDoctorsComponent},
             {path: 'profile', component: ProfileComponent},
             {path: 'appointments', component: AppointmentsPatientComponent},
-            {path: 'availabilities', component: AvailabilitiesCalendarComponent}
+            {path: 'availabilities', component: AvailabilitiesCalendarComponent},
+            {path: 'docs', component: UsersDocsComponent}
         ]
     },
     {
@@ -45,6 +47,9 @@ const routes: Routes = [
             },
             {
                 path: 'users/:id', component: ProfileComponent
+            },
+            {
+                path: 'docs', component: UsersDocsComponent
             }
         ]
     }
